@@ -24,6 +24,7 @@ const sch = {
     Pre_requisites: String,
     Category: String,
     Commitment: String,
+    imageUrl: String,
     id:Number
 }
 const monmodel = mongoose.model("NEWCOL3",sch)
@@ -39,7 +40,9 @@ app.post("/post",async(req,res)=>{
     Pre_requisites: req.body.Pre_requisites,
     Category: req.body.Category,
     Commitment: req.body.Commitment,
+    imageUrl: req.body.imageUrl,
     id: req.body.id
+        
     });
     const val = await data.save();
     res.json(val);
@@ -56,9 +59,10 @@ app.put("/update/:id",async(req,res)=>{
   let Pre_requisites1 = req.body.Pre_requisites;
   let Category1 = req.body.Category;
   let Commitment1 = req.body.Commitment;
+  let imageUrl1 =   req.body.imageUrl;
     //find id
     // update
-    monmodel.findOneAndUpdate({ id: upid }, { $set: { name: upname, email: upemail,Title:Title1,Trailer_for_your_Process:Trailer_for_your_Process1,Oppurtunity_Description:Oppurtunity_Description1,Learning_Outcomes:Learning_Outcomes1,Pre_requisites:Pre_requisites1,Category:Category1,Commitment:Commitment1 } },{new:false},(err,data)=>{
+    monmodel.findOneAndUpdate({ id: upid }, { $set: { name: upname, email: upemail,Title:Title1,Trailer_for_your_Process:Trailer_for_your_Process1,Oppurtunity_Description:Oppurtunity_Description1,Learning_Outcomes:Learning_Outcomes1,Pre_requisites:Pre_requisites1,Category:Category1,Commitment:Commitment1,imageUrl: imageUrl1} },{new:false},(err,data)=>{
         // what is user id which is not in db
         if(err)
         {
